@@ -1,0 +1,11 @@
+# .NET  
+bin/  
+obj/  
+*.user  
+*.suo  
+*.userprefs  
+  
+# Rider  
+.idea/  
+*.DotSettings.user  
+*.csproj.DotSettings.user 

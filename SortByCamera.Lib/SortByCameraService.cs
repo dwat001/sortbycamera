@@ -56,12 +56,11 @@ public class SortByCameraService
     {
         using var inputStream = imageFile.OpenRead();
         var exifDirectories = ImageMetadataReader.ReadMetadata(inputStream)
-            .OfType<ExifSubIfdDirectory>();
+            .OfType<ExifIfd0Directory>();
         foreach (var exif in exifDirectories)
         {
-            var serial = exif.GetDescription(ExifDirectoryBase.TagBodySerialNumber) ?? "Unknown";
             var model = exif.GetDescription(ExifDirectoryBase.TagModel) ?? "Unknown";
-            return $"{model} - {serial}";
+            return model;
         }
 
         return null;

@@ -20,7 +20,7 @@ public class SortByCameraService
         var subDirectories = new Dictionary<string, DirectoryInfo>();
         foreach (FileInfo imageFile in source.GetFiles())
         {
-            if (ValidExtensions.Contains(imageFile.Extension) == false)
+            if (ValidExtensions.Contains(imageFile.Extension.ToLower()) == false)
             {
                 _log.WriteLine($"Skipping {imageFile.FullName} as it is not a valid image file");
                 continue;

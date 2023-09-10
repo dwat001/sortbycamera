@@ -1,11 +1,12 @@
-﻿using System.IO;
-using MetadataExtractor;
+﻿using MetadataExtractor;
 using MetadataExtractor.Formats.Exif;
 
 namespace SortByCamera.Lib;
 public class SortByCameraService
 {
     private readonly TextWriter _log;
+
+    static readonly string[] ValidExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff" };
 
     public SortByCameraService(TextWriter log)
     {
@@ -19,8 +20,20 @@ public class SortByCameraService
         var subDirectories = new Dictionary<string, DirectoryInfo>();
         foreach (FileInfo imageFile in source.GetFiles())
         {
-            using var inputStream = imageFile.OpenRead();
-            string cameraDescription = GetCameraDescription(inputStream);
+            if (ValidExtensions.Contains(imageFile.Extension) == false)
+            {
+                _log.WriteLine($"Skipping {imageFile.FullName} as it is not a valid image file");
+                continue;
+            }
+
+            string? cameraDescription = GetCameraDescription(imageFile);
+
+            if (cameraDescription == null)
+            {
+                _log.WriteLine($"Skipping {imageFile.FullName} as it does not have camera metadata");
+                continue;
+            }
+
             if (subDirectories.ContainsKey(cameraDescription) == false)
             {
                 var existingDirectory = source.GetDirectories(cameraDescription).FirstOrDefault();
@@ -39,8 +52,9 @@ public class SortByCameraService
         }
     }
 
-    static string GetCameraDescription(FileStream inputStream)
+    static string? GetCameraDescription(FileInfo imageFile)
     {
+        using var inputStream = imageFile.OpenRead();
         var exifDirectories = ImageMetadataReader.ReadMetadata(inputStream)
             .OfType<ExifSubIfdDirectory>();
         foreach (var exif in exifDirectories)
@@ -50,6 +64,6 @@ public class SortByCameraService
             return $"{model} - {serial}";
         }
 
-        return $"UNKNOWN";
+        return null;
     }
 }

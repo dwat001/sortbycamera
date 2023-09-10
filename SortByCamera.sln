@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortByCamera.Cli", "SortByCamera.Cli\SortByCamera.Cli.csproj", "{7612AB53-C6D0-4EE8-AF1D-E3879558A879}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortByCamera.Lib", "SortByCamera.Lib\SortByCamera.Lib.csproj", "{FAB710B2-1F00-4421-BB1A-D9030E2B5EAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7612AB53-C6D0-4EE8-AF1D-E3879558A879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7612AB53-C6D0-4EE8-AF1D-E3879558A879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7612AB53-C6D0-4EE8-AF1D-E3879558A879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7612AB53-C6D0-4EE8-AF1D-E3879558A879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAB710B2-1F00-4421-BB1A-D9030E2B5EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAB710B2-1F00-4421-BB1A-D9030E2B5EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAB710B2-1F00-4421-BB1A-D9030E2B5EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAB710B2-1F00-4421-BB1A-D9030E2B5EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
